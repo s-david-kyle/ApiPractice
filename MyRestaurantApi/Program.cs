@@ -43,6 +43,8 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapContactEndpoints();
 
+app.MapMenuItemOrderedEndpoints();
+
 app.Run();
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
