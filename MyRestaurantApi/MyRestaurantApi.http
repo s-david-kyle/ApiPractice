@@ -7,7 +7,7 @@ GET {{MyRestaurantApi_HostAddress}}/api/Contact
 
 # get a specific contact
 
-GET {{MyRestaurantApi_HostAddress}}/api/Contact/3
+GET {{MyRestaurantApi_HostAddress}}/api/Contact/2
 
 ###
 
