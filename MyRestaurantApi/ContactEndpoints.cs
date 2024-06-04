@@ -32,10 +32,9 @@ public static class ContactEndpoints
             var affected = await db.Contact
                 .Where(model => model.Id == id)
                 .ExecuteUpdateAsync(setters => setters
-                    .SetProperty(m => m.Id, contact.Id)
-                    .SetProperty(m => m.Name, contact.Name)
-                    .SetProperty(m => m.Email, contact.Email)
-                    .SetProperty(m => m.Phone, contact.Phone)
+                    .SetProperty(m => m.Name, c => contact.Name ?? c.Name)
+                    .SetProperty(m => m.Email, c => contact.Email ?? c.Email)
+                    .SetProperty(m => m.Phone, c => contact.Phone ?? c.Phone)
                     );
             return affected == 1 ? TypedResults.Ok() : TypedResults.NotFound();
         })

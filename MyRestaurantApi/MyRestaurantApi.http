@@ -1,6 +1,114 @@
-@MyRestaurantApi_HostAddress = http://localhost:5009
+@MyRestaurantApi_HostAddress = https://localhost:7045
 
-GET {{MyRestaurantApi_HostAddress}}/weatherforecast/
-Accept: application/json
+# get all contacts
+GET {{MyRestaurantApi_HostAddress}}/api/Contact
+
+###
+
+# get a specific contact
+
+GET {{MyRestaurantApi_HostAddress}}/api/Contact/3
+
+###
+
+# update the contact phone number
+PUT {{MyRestaurantApi_HostAddress}}/api/Contact/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "phone": "555-212-4444"
+}
+
+###
+
+# add a new contact
+POST {{MyRestaurantApi_HostAddress}}/api/Contact
+Content-Type: application/json
+
+{
+  "name": "Nancy Anderson 2",
+  "email": "nancy@woodgrovebank.com",
+  "phone": "555-898-453435"
+}
+###
+
+# get the contact that we just added
+GET {{MyRestaurantApi_HostAddress}}/api/Contact/9
+
+### 
+
+# delete the contact we just created
+DELETE {{MyRestaurantApi_HostAddress}}/api/Contact/9
+
+###
+
+# try to get the contact that we just deleted
+GET {{MyRestaurantApi_HostAddress}}/api/Contact/9
+
+### 
+
+
+# get all menu items
+GET {{MyRestaurantApi_HostAddress}}/api/MenuItem
+
+###
+
+# get all togo orders (empty for now)
+GET {{MyRestaurantApi_HostAddress}}/api/TogoOrder
+
+###
+
+# add a togo order
+POST {{MyRestaurantApi_HostAddress}}/api/TogoOrder
+Content-type: application/json
+
+{
+  "itemsOrdered": [
+    {
+      "menuItemId":2001
+    }
+  ],
+  "subtotal": 3.50,
+  "tax": 0.8,
+  "total": 4.30,
+  "paymentMethod": 1,
+  "customer": {
+    "id": 2
+  }
+}
+
+###
+# add another togo order
+POST {{MyRestaurantApi_HostAddress}}/api/TogoOrder/
+Content-Type: application/json
+
+{
+  "itemsOrdered": [
+    {
+      "menuItemId":2001
+    },
+    {
+      "menuItemId":2002
+    },
+    {
+      "menuItemId":2003
+    },
+    {
+      "menuItemId":2004
+    }
+  ],
+  "subtotal": 33.50,
+  "tax": 4.8,
+  "total": 38.30,
+  "paymentMethod": 1,
+  "customer": {
+    "id": 3
+  }
+}
+
+###
+GET https://httpbin.org/anything
+X-ApiKey: "{{apiKey}}
 
 ###
