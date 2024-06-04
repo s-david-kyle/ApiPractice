@@ -47,6 +47,8 @@ app.MapMenuItemOrderedEndpoints();
 
 app.MapTogoOrderEndpoints();
 
+app.MapMenuItemEndpoints();
+
 app.Run();
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
